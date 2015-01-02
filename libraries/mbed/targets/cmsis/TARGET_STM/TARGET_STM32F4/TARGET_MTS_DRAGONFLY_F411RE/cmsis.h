@@ -1,4 +1,5 @@
 /* mbed Microcontroller Library
+ * A generic CMSIS include header
  *******************************************************************************
  * Copyright (c) 2014, STMicroelectronics
  * All rights reserved.
@@ -27,54 +28,11 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *******************************************************************************
  */
-#ifndef MBED_PERIPHERALNAMES_H
-#define MBED_PERIPHERALNAMES_H
 
-#include "cmsis.h"
+#ifndef MBED_CMSIS_H
+#define MBED_CMSIS_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-typedef enum {
-    ADC_1 = (int)ADC1_BASE,
-    ADC_2 = (int)ADC2_BASE,
-} ADCName;
-
-typedef enum {
-    DAC_1 = (int)DAC1_BASE,
-    DAC_2 = (int)DAC2_BASE
-} DACName;
-
-typedef enum {
-    UART_1 = (int)USART1_BASE,
-    UART_2 = (int)USART2_BASE,
-    UART_3 = (int)USART3_BASE
-} UARTName;
-
-#define STDIO_UART_TX  PB_3
-#define STDIO_UART_RX  PB_4
-#define STDIO_UART     UART_2
-
-typedef enum {
-    SPI_1 = (int)SPI1_BASE
-} SPIName;
-
-typedef enum {
-    I2C_1 = (int)I2C1_BASE
-} I2CName;
-
-typedef enum {
-    PWM_1  = (int)TIM1_BASE,
-    PWM_2  = (int)TIM2_BASE,
-    PWM_3  = (int)TIM3_BASE,
-    PWM_15 = (int)TIM15_BASE,
-    PWM_16 = (int)TIM16_BASE,
-    PWM_17 = (int)TIM17_BASE
-} PWMName;
-
-#ifdef __cplusplus
-}
-#endif
+#include "stm32f4xx.h"
+#include "cmsis_nvic.h"
 
 #endif
