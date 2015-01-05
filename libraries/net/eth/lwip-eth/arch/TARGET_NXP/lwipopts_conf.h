@@ -24,7 +24,7 @@
 #if defined(TARGET_LPC4088)
 #define MEM_SIZE                      15360
 #elif defined(TARGET_LPC1768)
-#define MEM_SIZE                      16362
+#define MEM_SIZE                      8192
 #endif
 
 #endif

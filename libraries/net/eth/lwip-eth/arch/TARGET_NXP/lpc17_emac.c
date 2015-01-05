@@ -31,7 +31,9 @@
 #include "lwip/stats.h"
 #include "lwip/snmp.h"
 #include "netif/etharp.h"
-#include "netif/ppp_oe.h"
+#if PPPOE_SUPPORT
+#include "netif/ppp/pppoe.h"
+#endif
 
 #include "lpc17xx_emac.h"
 #include "eth_arch.h"
@@ -366,7 +368,7 @@ static struct pbuf *lpc_low_level_input(struct netif *netif)
     			LWIP_DEBUGF(UDP_LPC_EMAC | LWIP_DBG_TRACE,
     				("lpc_low_level_input: Packet index %d dropped for OOM\n",
     				idx));
-			
+
 #ifdef LOCK_RX_THREAD
 #if NO_SYS == 0
         		sys_mutex_unlock(&lpc_enetif->TXLockMutex);

@@ -64,17 +64,17 @@ class GCC(mbedToolchain):
             common_flags.append("-g")
             common_flags.append("-O0")
         else:
-            common_flags.append("-O2")
+            common_flags.append("-O3")
 
         main_cc = join(tool_path, "arm-none-eabi-gcc")
         main_cppc = join(tool_path, "arm-none-eabi-g++")
         self.asm = [main_cc, "-x", "assembler-with-cpp"] + common_flags
         if not "analyze" in self.options:
             self.cc  = [main_cc, "-std=gnu99"] + common_flags
-            self.cppc =[main_cppc, "-std=gnu++11", "-fno-rtti"] + common_flags
+            self.cppc =[main_cppc, "-std=gnu++0x", "-fno-rtti"] + common_flags
         else:
             self.cc  = [join(GOANNA_PATH, "goannacc"), "--with-cc=" + main_cc.replace('\\', '/'), "-std=gnu99", "--dialect=gnu", '--output-format="%s"' % self.GOANNA_FORMAT] + common_flags
-            self.cppc= [join(GOANNA_PATH, "goannac++"), "--with-cxx=" + main_cppc.replace('\\', '/'), "-std=gnu++11", "-fno-rtti", "--dialect=gnu", '--output-format="%s"' % self.GOANNA_FORMAT] + common_flags
+            self.cppc= [join(GOANNA_PATH, "goannac++"), "--with-cxx=" + main_cppc.replace('\\', '/'), "-std=gnu++0x", "-fno-rtti", "--dialect=gnu", '--output-format="%s"' % self.GOANNA_FORMAT] + common_flags
 
         self.ld = [join(tool_path, "arm-none-eabi-gcc"), "-Wl,--gc-sections", "-Wl,--wrap,main"] + self.cpu
         self.sys_libs = ["stdc++", "supc++", "m", "c", "gcc"]
